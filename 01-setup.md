@@ -261,6 +261,81 @@ Tu es un agent spécialisé dans le développement au sein d'une base de code ex
 
 Vous remarquerez que Cursor vous permet d'appliquer ces rules uniquement dans certains dossier, ou pour certains types de fichiers.
 
+## 🤖 Ce que les agents apportent au workflow de code
+
+### 3.3 Révolution du processus de développement
+
+Les agents IA transforment fondamentalement la façon dont nous développons des applications. Voici comment ils enrichissent votre workflow :
+
+#### 🔄 **Workflow traditionnel vs. Workflow assisté par IA**
+
+**Avant (Workflow traditionnel) :**
+```
+Idée → Recherche manuelle → Écriture du code → Tests manuels → Debug → Documentation
+```
+
+**Avec les agents IA (Workflow moderne) :**
+```
+Idée → Agent analyse → Code généré + Tests automatiques → Validation IA → Documentation auto
+```
+
+#### 🚀 **Avantages clés des agents dans le développement**
+
+**1. 📈 Accélération du développement**
+- **Génération de code** : Création automatique de composants, API et tests
+- **Refactoring intelligent** : Amélioration du code existant en respectant les patterns
+- **Résolution de bugs** : Identification et correction automatique des erreurs
+
+**2. 🧠 Assistance cognitive**
+- **Chain of Thought** : Décomposition des tâches complexes en étapes simples
+- **Contextualisation** : Compréhension de votre base de code existante
+- **Recommandations** : Suggestions d'architectures et bonnes pratiques
+
+**3. 🔗 Intégration d'outils (MCP)**
+- **Figma → Code** : Transformation automatique des designs en composants React
+- **Documentation** : Accès en temps réel aux docs techniques via DeepWiki
+- **Tests E2E** : Création et exécution automatique de tests Playwright
+
+**4. 🎯 Qualité et cohérence**
+- **Standards respectés** : Code conforme aux conventions du projet
+- **Tests intégrés** : Validation automatique à chaque modification
+- **Gestion d'erreurs** : Implémentation robuste des cas d'erreur
+
+#### 💡 **Cas d'usage concrets dans FocusFlow**
+
+| Tâche traditionnelle | Avec les agents IA | Gain de temps |
+|---------------------|-------------------|---------------|
+| Créer un composant React | `::figma [URL] → Génération automatique` | **80%** |
+| Écrire des tests E2E | `Tests Playwright en langage naturel` | **70%** |
+| Consulter la doc React | `::deepwiki facebook/react` | **90%** |
+| Débugger une API | `Analyse + correction automatique` | **60%** |
+
+#### 🎨 **Exemple de workflow avec agents**
+
+**Scénario :** Ajouter une fonctionnalité de filtre de tâches
+
+```markdown
+1. **Analyse par l'agent** : Comprend la demande et examine le code existant
+2. **Design import** : ::figma pour récupérer le design du filtre
+3. **Génération** : Création automatique du composant TaskFilter
+4. **Intégration** : Modification du store Zustand et des composants existants
+5. **Tests** : Génération automatique des tests Playwright
+6. **Documentation** : Mise à jour automatique des commentaires et README
+```
+
+**Résultat :** 30 minutes au lieu de 3 heures !
+
+#### ⚡ **Productivité amplifiée**
+
+Les agents ne remplacent pas le développeur, ils **amplifient** ses capacités :
+
+- **Plus de créativité** : Focus sur l'architecture et l'UX au lieu du code répétitif
+- **Moins d'erreurs** : Validation automatique et tests intégrés
+- **Apprentissage continu** : Découverte de nouvelles techniques et patterns
+- **Itération rapide** : Prototypage et validation ultra-rapides
+
+> 💡 **Conseil :** Les agents sont vos assistants, pas vos remplaçants. Gardez le contrôle sur l'architecture et les décisions importantes !
+
 ## ➡️ Suite du tutoriel
 
 Votre environnement est maintenant prêt ! Passez au guide suivant :
