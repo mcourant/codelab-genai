@@ -1,16 +1,16 @@
 import { SlideMetadata } from './types';
 
 // Import des composants de slides
-import { 
-  PersonalIntroSlide,
+import {
   TitleSlide,
+  NantesGenAIMeetupSlide,
   CoachesSlide,
   CursorAdvantagesSlide,
   MCPToolsSlide,
   LearningPathSlide,
   RequirementsSlide,
   CallToActionSlide,
-  WiFiSlide
+  ShiftHackathonSlide,
 } from '@/components/slides/03-CodelabSlides';
 
 /**
@@ -23,19 +23,24 @@ import {
  */
 export const slideRegistry: SlideMetadata[] = [
   {
-    id: 'personal-intro',
-    title: 'Maxime Courant - Introduction',
-    component: PersonalIntroSlide,
-  },
-  {
     id: 'title',
     title: 'Ensorcelle ton IDE',
     component: TitleSlide,
   },
   {
     id: 'coaches',
-    title: 'Les 3 Coachs',
+    title: 'Les 2 Coachs',
     component: CoachesSlide,
+  },
+  {
+    id: 'nantes-genai-meetup',
+    title: 'Meetup GenAI Nantes',
+    component: NantesGenAIMeetupSlide,
+  },
+  {
+    id: 'learning-path',
+    title: 'Parcours d\'Apprentissage',
+    component: LearningPathSlide,
   },
   {
     id: 'cursor-advantages',
@@ -48,11 +53,6 @@ export const slideRegistry: SlideMetadata[] = [
     component: MCPToolsSlide,
   },
   {
-    id: 'learning-path',
-    title: 'Parcours d\'Apprentissage',
-    component: LearningPathSlide,
-  },
-  {
     id: 'requirements',
     title: 'Prérequis Techniques',
     component: RequirementsSlide,
@@ -63,9 +63,9 @@ export const slideRegistry: SlideMetadata[] = [
     component: CallToActionSlide,
   },
   {
-    id: 'wifi',
-    title: 'Informations WiFi',
-    component: WiFiSlide,
+    id: 'shift-hackathon',
+    title: 'Shift Hackathon',
+    component: ShiftHackathonSlide,
   },
 ];
 
