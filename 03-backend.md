@@ -86,6 +86,32 @@ Créez votre propre prompt pour Cursor en pensant à :
 3. La configuration du projet (package.json, scripts)
 4. Les bonnes pratiques Express 2024
 
+#### 2.3.1 Utiliser le mode Plan
+
+> 💡 **Recommandation** : Utilisez le mode **Plan** de Cursor pour planifier votre architecture backend avant de générer le code.
+
+**Workflow :**
+
+1. **Activez le mode Plan** (icône Plan dans le chat Agent)
+2. **Donnez votre prompt** (celui que vous avez créé ou l'exemple ci-dessous)
+3. **Répondez aux questions** : Cursor peut demander des précisions sur :
+   - La structure de dossiers préférée
+   - Les conventions de nommage
+   - Les outils de développement (nodemon, etc.)
+
+4. **Cursor génère le plan** avec la structure complète du backend
+
+**Durant l'exécution :**
+
+L'agent peut suggérer des améliorations :
+- "Ajouter un logger (Winston ou Morgan) ?"
+- "Mettre en place ESLint et Prettier ?"
+- "Créer un fichier .env.example pour la documentation ?"
+
+**À vous de décider** : Acceptez/refusez selon vos besoins pour ce tutoriel.
+
+5. **Validez et exécutez** le plan
+
 <details>
 <summary>🆘 Besoin d'aide ? Exemple de prompt</summary>
 
@@ -166,6 +192,36 @@ Créez un prompt pour générer :
 2. **Gestion d'erreurs** : Try/catch et messages clairs
 3. **Validation** : Vérifier les données reçues
 4. **Structure de réponse** : Format JSON consistant
+
+#### 3.3.1 Utiliser le mode Plan
+
+> 💡 **Recommandation** : Planifiez vos routes API avec le mode Plan pour garantir une structure cohérente.
+
+**Workflow :**
+
+1. **Activez le mode Plan**
+2. **Donnez votre prompt** pour la création des routes
+3. **Répondez aux questions** : Cursor peut demander :
+   - "Séparer les routes dans différents fichiers (tasks.routes.js) ?"
+   - "Ajouter un middleware de validation (express-validator) ?"
+   - "Créer des controllers séparés pour la logique métier ?"
+
+4. **Cursor génère le plan** avec toutes les routes et leur structure
+
+**Durant l'exécution :**
+
+L'agent peut suggérer :
+- "Ajouter un middleware d'authentification pour sécuriser les routes ?"
+- "Implémenter un système de pagination pour GET /api/tasks ?"
+- "Ajouter des tests unitaires pour chaque route ?"
+- "Créer un middleware de rate limiting ?"
+
+**Vous gardez le contrôle** :
+- ✅ Acceptez ce qui améliore votre projet
+- ❌ Refusez ce qui n'est pas nécessaire pour le tutoriel
+- 🎯 Orientez selon vos objectifs d'apprentissage
+
+5. **Validez et exécutez** le plan
 
 <details>
 <summary>🆘 Besoin d'aide ? Exemple de prompt</summary>
@@ -319,6 +375,40 @@ Adaptez le frontend pour utiliser votre API :
 2. **Store Zustand** : Modifier pour utiliser l'API au lieu de localStorage
 3. **Gestion d'erreurs** : Afficher les erreurs réseau
 4. **Loading states** : Afficher les états de chargement
+
+#### 4.3.1 Utiliser le mode Plan
+
+> 💡 **Recommandation** : Utilisez le mode Plan pour planifier l'intégration complète frontend-backend.
+
+**Workflow :**
+
+1. **Activez le mode Plan**
+2. **Donnez votre prompt** pour l'intégration frontend
+3. **Répondez aux questions** : Cursor peut demander :
+   - "Utiliser React Query ou SWR pour la gestion du cache ?"
+   - "Implémenter des optimistic updates ?"
+   - "Ajouter un système de retry automatique en cas d'erreur ?"
+
+4. **Cursor génère le plan** incluant :
+   - Service API
+   - Modifications du store Zustand
+   - Composants de gestion d'erreurs
+   - États de chargement
+
+**Durant l'exécution :**
+
+L'agent peut suggérer des améliorations :
+- "Ajouter des notifications toast avec React Hot Toast ?"
+- "Implémenter un système de synchronisation en temps réel ?"
+- "Créer un composant ErrorBoundary pour gérer les erreurs ?"
+- "Ajouter des tests d'intégration avec MSW (Mock Service Worker) ?"
+
+**C'est votre projet** :
+- Explorez les suggestions qui vous intéressent
+- Restez simple si vous préférez maîtriser les bases
+- Documentez vos choix pour comprendre leur impact
+
+5. **Validez et exécutez** le plan
 
 <details>
 <summary>🆘 Besoin d'aide ? Exemple de prompt</summary>

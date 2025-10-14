@@ -38,7 +38,7 @@
 **Durée estimée :** 30 minutes
 
 - Installation et configuration de l'environnement
-- Setup de Cursor AI avec les outils MCP (Figma, Deepwiki, Playwright)
+- Setup de Cursor AI avec les outils MCP (Figma, Context7, Playwright)
 - Initialisation du projet React + TypeScript + Tailwind
 - Création des règles de projet pour l'IA
 
@@ -96,7 +96,7 @@ npm run dev
 
 ### Outils MCP utilisés
 - **🎨 Figma MCP** : Import de designs → code React automatique
-- **📚 Deepwiki MCP** : Documentation instantanée des dépendances
+- **📚 Context7 MCP** : Documentation instantanée des dépendances
 - **🧪 Playwright MCP** : Tests E2E en langage naturel
 
 ### Workflow assisté par IA

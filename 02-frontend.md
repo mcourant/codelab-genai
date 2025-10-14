@@ -69,10 +69,20 @@ npm run dev
 
 L'application doit être accessible sur `http://localhost:5173`
 
-### 2.2 Prompt pour la génération
+#### 2.2 Utiliser le mode Plan
 
-Une fois la maquette importée, demander à Cursor de construire cette page. Voici un prompt que vous pourriez améliorer:
+> 💡 **Bonne pratique** : Avant de générer du code, utilisez le mode **Plan** de Cursor pour planifier l'architecture et valider l'approche.
 
+**Workflow complet avec le mode Plan :**
+
+**Étape 1 : Activer le mode Plan**
+- Ouvrez le chat Cursor en mode Agent (🪄)
+- Cliquez sur l'icône **"Plan"** en bas du chat (ou utilisez Cmd/Ctrl + Shift + P)
+- Le mode Plan est maintenant actif (vous verrez un indicateur)
+
+**Étape 2 : Donner votre prompt**
+
+Collez le prompt ci-dessus dans le chat :
 ```
 Sur la base de la maquette Figma importée, implémente l'interface FocusFlow en React + TypeScript avec Tailwind CSS.
 
@@ -88,7 +98,80 @@ Utilise le store Zustand (useTaskStore) pour la gestion d'état.
 Respecte fidèlement le style du design Figma.
 ```
 
-Vous pourriez avoir besoin de plusieurs interactions avec l'agent Cursor, pour (vibe-)coder cette page.
+**Étape 3 : Répondre aux questions de clarification**
+
+Cursor peut vous poser des questions pour être plus précis, par exemple :
+- "Où souhaitez-vous créer les composants ? Dans `src/components/` ?"
+- "Quel format pour les tests ? Voulez-vous des tests unitaires ?"
+- "Quelle convention de nommage pour les fichiers ?"
+
+> 💬 **Répondez à ces questions** pour aider Cursor à créer un plan plus adapté à vos besoins.
+
+**Étape 4 : Cursor génère le plan**
+
+Une fois vos réponses données, Cursor crée automatiquement un plan détaillé :
+
+```
+📋 Plan de génération FocusFlow
+
+1. Créer la structure de types (src/types/index.ts)
+   - Interface Task
+   - Interface TaskStore
+
+2. Créer le store Zustand (src/store/index.ts)
+   - État initial
+   - Actions CRUD (addTask, toggleTask, removeTask)
+   - Persistance localStorage
+
+3. Créer les composants :
+   - TaskInput.tsx (src/components/)
+   - TaskItem.tsx (src/components/)
+   - TaskList.tsx (src/components/)
+
+4. Créer la page TaskPage (src/pages/TaskPage.tsx)
+
+5. Mettre à jour App.tsx avec le routing
+```
+
+**Étape 5 : Review et validation**
+
+- **Examinez le plan** : Vérifiez la structure, l'ordre, les chemins de fichiers
+- **Demandez des modifications** si nécessaire : "Peux-tu déplacer les types dans un dossier séparé ?"
+- **Validez le plan** quand tout vous convient
+
+**Étape 6 : Exécuter le plan**
+
+- Cliquez sur **"Execute Plan"** (ou "Build")
+- Cursor va créer tous les fichiers selon le plan établi
+- Les fichiers seront générés dans l'ordre défini
+
+> ⚠️ **Avantage du mode Plan** : Vous validez l'architecture AVANT la génération, ce qui évite les réécritures et garantit une structure cohérente.
+
+**Durant l'exécution du plan :**
+
+> 🎨 **Interaction dynamique** : Pendant que Cursor génère les fichiers, l'agent peut vous proposer des suggestions et des améliorations.
+
+**Exemples de suggestions possibles :**
+- "Je peux ajouter des animations avec Framer Motion pour les transitions ?"
+- "Voulez-vous que j'ajoute la gestion des erreurs avec des toasts ?"
+- "Je peux intégrer React Hook Form pour la validation du formulaire ?"
+- "Souhaitez-vous que j'ajoute des tests unitaires avec Vitest ?"
+
+**Vous avez le contrôle :**
+- ✅ **Acceptez** les suggestions qui vous intéressent : "Oui, ajoute Framer Motion"
+- ❌ **Refusez** celles que vous ne voulez pas : "Non, pas pour l'instant"
+- 🎯 **Orientez** l'intégration selon vos besoins : "Plutôt utilise des transitions CSS simples"
+- 💬 **Dialoguez** avec l'agent pour affiner : "Oui mais uniquement pour les tâches, pas les boutons"
+
+> 💡 **À vous de jouer** : C'est le moment d'explorer et de personnaliser votre application selon vos préférences. Cursor s'adapte à vos choix !
+
+**Après l'exécution :**
+
+Les fichiers sont créés automatiquement selon vos choix. Vous pouvez ensuite :
+- **Vérifier** chaque fichier généré avec les intégrations que vous avez acceptées
+- **Tester** l'application : `npm run dev`
+- **Demander des ajustements** supplémentaires via le chat si nécessaire
+- **Continuer l'exploration** : "Peux-tu ajouter un dark mode ?"
 
 #### Review
 
@@ -245,7 +328,7 @@ export default function TaskPage() {
         <h1 className="text-3xl font-bold text-gray-800 mb-2">FocusFlow</h1>
         <p className="text-gray-600">Organisez vos tâches avec la méthode GTD</p>
       </header>
-      
+
       <TaskInput />
       <TaskList />
     </div>
@@ -293,7 +376,7 @@ export const useTaskStore = create<TaskStore>()(
   persist(
     (set, get) => ({
       tasks: [],
-      
+
       addTask: (title: string) => {
         const newTask: Task = {
           id: Date.now(),
@@ -301,12 +384,12 @@ export const useTaskStore = create<TaskStore>()(
           done: false,
           createdAt: new Date()
         };
-        
+
         set(state => ({
           tasks: [...state.tasks, newTask]
         }));
       },
-      
+
       toggleTask: (id: number) => {
         set(state => ({
           tasks: state.tasks.map(task =>
@@ -314,13 +397,13 @@ export const useTaskStore = create<TaskStore>()(
           )
         }));
       },
-      
+
       removeTask: (id: number) => {
         set(state => ({
           tasks: state.tasks.filter(task => task.id !== id)
         }));
       },
-      
+
       clearCompleted: () => {
         set(state => ({
           tasks: state.tasks.filter(task => !task.done)
@@ -425,7 +508,7 @@ interface TaskFilterProps {
 export default function TaskFilter({ currentFilter, onFilterChange }: TaskFilterProps) {
   const tasks = useTaskStore(state => state.tasks);
   const clearCompleted = useTaskStore(state => state.clearCompleted);
-  
+
   const activeCount = tasks.filter(task => !task.done).length;
   const completedCount = tasks.filter(task => task.done).length;
 
@@ -434,7 +517,7 @@ export default function TaskFilter({ currentFilter, onFilterChange }: TaskFilter
       <span className="text-sm text-gray-600">
         {activeCount} tâche{activeCount > 1 ? 's' : ''} active{activeCount > 1 ? 's' : ''}
       </span>
-      
+
       <div className="flex gap-2">
         {(['all', 'active', 'completed'] as Filter[]).map(filter => (
           <button
@@ -450,7 +533,7 @@ export default function TaskFilter({ currentFilter, onFilterChange }: TaskFilter
           </button>
         ))}
       </div>
-      
+
       {completedCount > 0 && (
         <button
           onClick={clearCompleted}
@@ -484,7 +567,7 @@ Assurez-vous que l'interface s'adapte aux mobiles :
       Organisez vos tâches avec la méthode GTD
     </p>
   </header>
-  
+
   {/* Reste du contenu */}
 </div>
 ```
@@ -500,7 +583,7 @@ Ajoutez des transitions fluides avec Tailwind :
 
 ```typescript
 // Dans TaskItem.tsx
-<div className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg mb-2 
+<div className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg mb-2
                 transition-all duration-200 hover:shadow-md hover:border-gray-300">
   {/* Contenu */}
 </div>

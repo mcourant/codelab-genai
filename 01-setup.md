@@ -21,7 +21,7 @@
 - **État global** : Zustand avec persistance localStorage
 - **Navigation** : React Router DOM
 - **Tests** : Playwright pour les tests E2E
-- **IA** : Cursor AI avec intégrations MCP (Figma, Deepwiki, Playwright)
+- **IA** : Cursor AI avec intégrations MCP (Figma, Context7, Playwright)
 - **Backend** : Express.js (optionnel, guide 3)
 
 ## 📋 Prérequis
@@ -70,7 +70,7 @@ npm install -D @types/react-router-dom
 Les **MCP (Model Context Protocol)** étendent les capacités de Cursor AI en connectant des sources externes :
 
 - **🎨 Figma MCP** : Import de designs et génération de code UI
-- **📚 Deepwiki MCP** : Accès aux documentations GitHub
+- **📚 Context7 MCP** : Accès aux documentations des bibliothèques
 - **🧪 Playwright MCP** : Tests E2E automatisés
 
 Vous trouverez une liste de serveurs MCP et leurs instructions d'installation respectives ici: [mcp.so](https://mcp.so).
@@ -94,9 +94,9 @@ Créez ou éditez le fichier `~/.cursor/mcp.json` (accessible également depuis 
         "--stdio"
       ]
     },
-    "deepwiki": {
-      "command": "npx",
-      "args": ["-y", "mcp-deepwiki@latest"]
+    "Context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {}
     },
     "playwright": {
       "command": "npx",
@@ -116,7 +116,7 @@ Créez ou éditez le fichier `~/.cursor/mcp.json` (accessible également depuis 
 
 1. Connectez-vous à [Figma](https://figma.com)
 2. Allez dans **Settings** → **Security** → **Personal Access Tokens**
-3. Générez un nouveau token avec les permissions API ci-dessous:
+3. Générez un nouveau token avec toutes les permissions API Read.
 4. ⚠️ **Conservez ce token précieusement** (il ne sera affiché qu'une seule fois)
 
 <img width="350" alt="image" src="https://github.com/user-attachments/assets/5407a6a1-f6ed-4d35-b346-4b2c157fb012" />
@@ -133,13 +133,17 @@ Une fois configuré, vous pourrez utiliser la commande `::figma` dans le chat Cu
 ::figma https://www.figma.com/design/IhVR4yEdIoYXqZWPnjM11R/Untitled
 ```
 
-### 2.3 Configuration du MCP Deepwiki
+### 2.3 Configuration du MCP Context7
 
-Le MCP Deepwiki est un service public qui ne nécessite aucune configuration supplémentaire.
+Le MCP Context7 est un service public qui ne nécessite aucune configuration supplémentaire. Il permet d'accéder à la documentation à jour de nombreuses bibliothèques.
 
 **Utilisation :**
+
+Context7 fonctionne via les outils MCP intégrés à Cursor. Pour consulter la documentation d'une bibliothèque, Cursor utilise automatiquement Context7 quand vous posez des questions sur des bibliothèques spécifiques (React, Next.js, Zustand, etc.).
+
+**Exemple de prompt :**
 ```
-::deepwiki facebook/react ask_question "How to use useEffect hook?"
+Utilise Context7 pour me montrer la documentation de React concernant le hook useEffect
 ```
 
 ### 2.4 Configuration du MCP Playwright
@@ -156,9 +160,25 @@ Dans les paramètres de Cursor, vérifiez que les serveurs MCP et notamment le s
 
 Les Cursor rules guident l'IA dans la génération de code conforme aux spécifications: code style, architecture, etc...
 
+### 3.0 Génération automatique (optionnel)
+
+> 💡 **Astuce** : Cursor peut générer automatiquement des règles adaptées à votre projet grâce à la commande `/generate cursor rules` dans le chat.
+
+Cette commande analyse votre codebase et crée des règles pertinentes basées sur:
+- Les technologies détectées dans votre projet
+- Les patterns de code existants
+- La structure de votre projet
+
+**Pour utiliser cette fonctionnalité :**
+1. Ouvrez le chat Cursor (Cmd/Ctrl + L)
+2. Tapez `/generate cursor rules`
+3. Cursor analysera votre projet et proposera des règles
+
+> 📝 **Note** : Dans ce tutoriel, nous allons créer des règles personnalisées manuellement pour mieux comprendre leur fonctionnement et les adapter spécifiquement à FocusFlow. Mais vous pouvez utiliser `/generate cursor rules` comme point de départ pour vos futurs projets !
+
 ### 3.1 Créer .cursor/rules/feature-planning.mdc
 
-Cette première Cursor rule va nous permettre décrire le projet, afin d'orienter l'agent de Cursor. 
+Cette première Cursor rule va nous permettre décrire le projet, afin d'orienter l'agent de Cursor.
 
 Décrivez quelques specifications fonctionnelles pour votre application de gestion de tâches.
 
@@ -172,7 +192,7 @@ ChatGPT peut vous aider, ou déroulez le contenu caché ci-dessous:
 ```markdown
 ---
 description: Features and technical specifications
-globs: 
+globs:
 alwaysApply: true
 ---
 
@@ -216,7 +236,7 @@ Dans une nouvelle Cursor rule, décrivez ensuite les étapes de construction d'u
 ```markdown
 ---
 description: Workflow Chain of Thought pour FocusFlow
-globs: 
+globs:
 alwaysApply: true
 ---
 
@@ -234,7 +254,7 @@ Tu es un agent spécialisé dans le développement au sein d'une base de code ex
 - Identifie les composants impactés
 - Documente les dépendances et contraintes
 
-## 3. Vérification via MCP DeepWiki
+## 3. Vérification via MCP Context7
 - Consulte les documentations nécessaires
 - Documente les informations pertinentes
 - Évalue l'impact sur le développement
@@ -272,7 +292,7 @@ Votre environnement est maintenant prêt ! Passez au guide suivant :
 ### 📚 Guides disponibles
 
 1. **[🚀 01-setup.md](01-setup.md)** - Configuration et préparation ← *Vous êtes ici*
-2. **[📱 02-frontend.md](02-frontend.md)** - Développement de l'interface  
+2. **[📱 02-frontend.md](02-frontend.md)** - Développement de l'interface
 3. **[🔧 03-backend.md](03-backend.md)** - Backend Express (optionnel)
 4. **[🏠 README.md](README.md)** - Vue d'ensemble du projet
 
