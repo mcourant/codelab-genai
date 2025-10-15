@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Thème codelab "Ensorcelle ton IDE" */
+    --codelab-dark: 30 4% 12%; /* #1E1C1B */
+    --codelab-yellow: 47 92% 79%; /* #FDE59A */
+    --codelab-yellow-bright: 45 100% 69%; /* #FFD865 */
+    --codelab-light: 0 0% 96%; /* #F4F4F4 */
+    --codelab-gray: 0 0% 72%; /* #B8B8B8 */
+    --codelab-beige: 45 85% 85%; /* #FBE8B6 */
+
+    /* Mode clair (fallback) */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  /* Thème sombre par défaut pour la présentation */
+  :root, .dark {
+    --background: var(--codelab-dark);
+    --foreground: var(--codelab-light);
+    --muted: 30 4% 20%;
+    --muted-foreground: var(--codelab-gray);
+    --popover: var(--codelab-dark);
+    --popover-foreground: var(--codelab-light);
+    --card: var(--codelab-dark);
+    --card-foreground: var(--codelab-light);
+    --border: 30 4% 25%;
+    --input: 30 4% 25%;
+    --primary: var(--codelab-yellow);
+    --primary-foreground: var(--codelab-dark);
+    --secondary: var(--codelab-beige);
+    --secondary-foreground: var(--codelab-dark);
+    --accent: var(--codelab-yellow-bright);
+    --accent-foreground: var(--codelab-dark);
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: var(--codelab-light);
+    --ring: var(--codelab-yellow);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
